@@ -19,22 +19,20 @@
 # sum them all together
 # C
 
-import math
+DEGREE = "\u00B0"
 
 def dms(my_float):
     result, remainder = divmod(my_float, 1)
     degrees = int(result)
-    minutes = "00"
-    seconds = "00"
+    minutes = 0
+    seconds = 0
     if (remainder != 0):
         temp_minutes = remainder * 60
         minutes, temp_seconds = divmod(temp_minutes, 1)
         minutes = int(minutes)
         seconds = int(temp_seconds * 60)
-    result = f"{degrees}{DEGREE}{str(minutes).rjust(2, '0')}\'{str(seconds).rjust(2, '0')}\""
+    result = f"{degrees}{DEGREE}{minutes:02d}\'{seconds:02d}\""
     return result
-
-DEGREE = "\u00B0"
 
 # All of these examples should print True
 print(dms(30) == "30°00'00\"")
